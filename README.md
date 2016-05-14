@@ -16,3 +16,7 @@ Search for Team:
 ![Team_query](https://raw.githubusercontent.com/paulxuca/KonradGroupTest/master/team_query.png)  
 Search for Stadium:  
 ![Stadium_Query](https://raw.githubusercontent.com/paulxuca/KonradGroupTest/master/stadium_query.png)
+
+#Notifications  
+Access through Navigation bar
+![Notifications](https://raw.githubusercontent.com/paulxuca/KonradGroupTest/master/notifications.png)
