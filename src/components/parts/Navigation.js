@@ -21,7 +21,7 @@ const Navigation = React.createClass({
             year: '',
             month: '',
             date: '',
-            favouriteTeam:''
+            queryOptions:'Team:Blue Jays'
         }
 
     },
@@ -33,7 +33,7 @@ const Navigation = React.createClass({
         } else {
             month = this.state.month;
         }
-        this.props.onUpdate(this.state.year, this.state.date, month, this.state.favouriteTeam);
+        this.props.onUpdate(this.state.year, this.state.date, month, this.state.queryOptions);
     },
 
     handleChange(event) {
@@ -43,8 +43,8 @@ const Navigation = React.createClass({
             this.setState({ month: event.target.value })
         } else if (event.target.id == 'date' && event.target.value.length < 3) {
             this.setState({ date: event.target.value })
-        } else if(event.target.id == 'favourite'){
-        	this.setState({ favouriteTeam: event.target.value })
+        } else if(event.target.id == 'query'){
+        	this.setState({ queryOptions: event.target.value })
         }
     },
 
@@ -67,9 +67,9 @@ const Navigation = React.createClass({
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
-		<form style={{width:'20%', float:'right', lineHeight:'5.2rem', marginRight:20}}>
+		<form style={{width:'40%', float:'right', lineHeight:'5.2rem', marginRight:20}}>
 		<fieldset>
-			<input type="text" placeholder="Favourite Team" id="favourite" value={this.state.favouriteTeam} onChange={this.handleChange}/>
+			<input type="text" placeholder="Team: || Stadium:" id="query" value={this.state.queryOptions} onChange={this.handleChange}/>
 		</fieldset>
 		</form>
 		

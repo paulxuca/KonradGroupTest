@@ -34,12 +34,12 @@ const MainApp = React.createClass({
             favouriteTeam: ''
         }
     },
-    onDateUpdate(year, date, month, favouriteTeam) {
+    onDateUpdate(year, date, month, queryOptions) {
         this.setState({
             year,
             date,
             month,
-            favouriteTeam
+            queryOptions
         });
         this.getDataScoreBoard(year, date, month);
     },
@@ -104,7 +104,7 @@ const MainApp = React.createClass({
            		onSetOpen={this.onSetSidebarOpen}
            		styles={{sidebar:{width:'50%', backgroundColor:'white'}}}>
            		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
-    			<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} favourite={this.state.favouriteTeam} onClick={this.handleGameClick}/>
+    			<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} query={this.state.queryOptions} onClick={this.handleGameClick}/>
   			</Sidebar>);
     }
 });
