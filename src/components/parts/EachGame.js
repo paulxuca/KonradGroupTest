@@ -9,16 +9,16 @@ const EachGame = React.createClass({
 				<div className="row">
 				<div className="col-xs-6">
 				<h2 className={(Number(this.props.score_away) > Number(this.props.score_home))?"bold":''}>{this.props.score_away}</h2>
-				<h6>{this.props.result['away_team_name']}</h6>
+				<h6 className={(Number(this.props.score_away) > Number(this.props.score_home))?"bold":''}>{this.props.result['away_team_name']}</h6>
 				</div>
 				<div className="col-xs-6">
 				<h2 className={(Number(this.props.score_home) > Number(this.props.score_away))?"bold":''}>{this.props.score_home}</h2>
-				<h6>{this.props.result['home_team_name']}</h6>
+				<h6 className={(Number(this.props.score_home) > Number(this.props.score_away))?"bold":''}>{this.props.result['home_team_name']}</h6>
 
 				</div>
 				</div>
 				  <p className="card-text">{this.props.result.status.status}</p>
-				  <a href="#" className="btn btn-primary">Go somewhere</a>
+				  <button className="btn btn-primary" onClick={this.props.onClick} id={this.props.result.game_data_directory}>More Information</button>
 			</div>
 		</div>);
     }

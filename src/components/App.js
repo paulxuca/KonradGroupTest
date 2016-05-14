@@ -30,7 +30,7 @@ const MainApp = React.createClass({
     	if(day.length <2){
     		day = '0'+day
     	}
-    	if(month.length <2){
+    	if(month.toString().length <2){
     		month = '0'+month
     	}
     	$.ajax({
@@ -46,9 +46,9 @@ const MainApp = React.createClass({
     render() {
         return (
         	<div>
-        		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
+        	<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
         		<MainAppContainer year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data}/>
-        	</div>)
+        		</div>)
     }
 });
 
