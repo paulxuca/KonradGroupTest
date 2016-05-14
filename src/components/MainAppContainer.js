@@ -1,6 +1,7 @@
 import React from 'react';
-import EachGame from './parts/EachGame';
 import moment from 'moment'
+import EachGame from './parts/EachGame';
+import DatePicker from './parts/DatePicker';
 
 
 var months = {
@@ -36,6 +37,7 @@ const MainAppContainer = React.createClass({
 				<div className="row">
 				<h1 style={{marginLeft:'auto', marginRight:'auto', marginBottom:'0.5rem'}}>{date}</h1>
 				</div>
+				<DatePicker onClick={this.props.onDateSwitch} date={this.props.date}/>
 					{games.map(function(result){
 					if(result && (result['away_team_name'].toUpperCase() == favouriteTeam || result['home_team_name'].toUpperCase() == favouriteTeam )){
 						var score_away = (result.status.status.toUpperCase() != 'CANCELLED' && result.status.status.toUpperCase() != 'POSTPONED')?result['linescore']['r']['away']:'0';
@@ -62,6 +64,7 @@ const MainAppContainer = React.createClass({
 				<div className="row">
 				<h1 style={{marginLeft:'auto', marginRight:'auto', marginBottom:'0.5rem'}}>{date}</h1>
 				</div>
+				<DatePicker onClick={this.props.onDateSwitch} date={this.props.date}/>
 				<EachGame onClick={this.props.onClick} result={this.props.data} score_home={this.props.data.linescore.r.home} score_away={this.props.data.linescore.r.away} key={this.props.data.id}/>
 				</div>);
 		}else{
@@ -70,6 +73,7 @@ const MainAppContainer = React.createClass({
 				<div className="row">
 				<h1 style={{marginLeft:'auto', marginRight:'auto', marginBottom:'0.5rem'}}>{date}</h1>
 				</div>
+				<DatePicker onClick={this.props.onDateSwitch} date={this.props.date}/>
 				<h4>{gamesMessage}</h4>
 				</div>);
 		}
