@@ -1,4 +1,5 @@
 import React from 'react';
+import SideBar from 'react-sidebar';
 
  var months = {
      'Jan': 1,
@@ -59,6 +60,9 @@ const Navigation = React.createClass({
                 width: '100%'
             }}>
 		<section className="container">
+		<ul style={{float:'left', lineHeight:'5rem', listStyleType:'none'}}>
+				<li onClick={this.props.onNotificationClick} id="previous" style={{float:'left'}} className="date-selectors">Notifications</li>
+		</ul>
 		<form style={{float:'right', lineHeight: '5rem'}} onSubmit={this.handleSubmit}>
 			<fieldset>
 				<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Year" onChange={this.handleChange} id="year" value={this.state.year}/>

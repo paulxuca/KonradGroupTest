@@ -5,6 +5,7 @@ import MainAppContainer from './MainAppContainer';
 import Navigation from './parts/Navigation';
 import Sidebar from 'react-sidebar';
 import SideBarContainer from './SideBarContainer'
+import NotificationContainer from './NotificationContainer';
 
  var months = {
      'Jan': 1,
@@ -30,6 +31,8 @@ const MainApp = React.createClass({
             date: '',
             nextDate: '',
             sidebarOpen: false,
+            notificationOpen: false,
+            notificationContent:'',
             sidebarContent:'',
             favouriteTeam: ''
         }
@@ -59,8 +62,12 @@ const MainApp = React.createClass({
         this.getDataScoreBoard(year, date, month);
     },
     onSetSidebarOpen(open){
- 		this.setState({sidebarOpen:open})
+ 		this.setState({sidebarOpen:open});
  	},
+ 	onSetNotificationOpen(open){
+ 		this.setState({notificationOpen:open});
+ 	}
+ 	,
     getDataScoreBoard(year, day, month) {
         if (day.length < 2) day = '0' + day;
         if (month.toString().length < 2) month = '0' + month;
@@ -84,6 +91,20 @@ const MainApp = React.createClass({
             }.bind(this)
         })
     },
+    handleNotfificationClick(e){
+    	if(this.state.notificationContent == ''){
+    		$.ajax({
+	         type: "GET",
+	         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+	         url: `http://gd2.mlb.com/components/game/mlb/notifications.json`,
+	         success: function(res) {
+	             this.setState({notificationOpen: true, notificationContent:res});
+	         }.bind(this)
+	     })
+    	}else{
+    		this.setState({notificationOpen:true});
+    	}
+    },
     handleGameClick(e) {
 	     $.ajax({
 	         type: "GET",
@@ -98,14 +119,29 @@ const MainApp = React.createClass({
     	var data = (this.state.sidebarContent != '')?this.state.sidebarContent.data.boxscore:'';
     	var sidebarContent = (this.state.sidebarContent != '')?(
     		<SideBarContainer data={data}/>): '';
+    	var notifications = (this.state.notificationContent != '')?this.state.notificationContent:'';
+    	var notificationContent = (this.state.notificationContent!='')?(
+    		<NotificationContainer data={notifications}/>
+    		):'';
+
         return (
-    		 <Sidebar sidebar={sidebarContent}
-           		open={this.state.sidebarOpen}
-           		onSetOpen={this.onSetSidebarOpen}
-           		styles={{sidebar:{width:'50%', backgroundColor:'white'}}}>
-           		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
-    			<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} query={this.state.queryOptions} onClick={this.handleGameClick}/>
-  			</Sidebar>);
+        	<div>
+        	 <Sidebar sidebar={notificationContent}
+        	 		  open={this.state.notificationOpen}
+        	 		  onSetOpen={this.onSetNotificationOpen}
+        	 		  pullRight={true}
+           			  styles={{sidebar:{width:'20%', backgroundColor:'white'}}}>
+		           			   <Sidebar sidebar={sidebarContent}
+				           		open={this.state.sidebarOpen}
+				           		onSetOpen={this.onSetSidebarOpen}
+				           		styles={{sidebar:{width:'50%', backgroundColor:'white'}}}>
+				           		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate} onNotificationClick={this.handleNotfificationClick}/>
+				    			<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} query={this.state.queryOptions} onClick={this.handleGameClick}/>
+				  			</Sidebar>
+             </Sidebar>
+
+    		
+  			</div>);
     }
 });
 

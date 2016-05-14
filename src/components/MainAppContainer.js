@@ -61,7 +61,7 @@ const MainAppContainer = React.createClass({
 		var current = moment([Number(this.props.year), Number(this.props.month)-1, Number(this.props.date)]);
 		var date = (this.props.date && this.props.month)?`${months[this.props.month]} ${this.props.date} ${this.props.year}`: 'Pick a Date!'; 
 		if(this.props.year == '' && this.props.month == '' && this.props.date == ''){
-			date="Please Enter a date!"
+			date=("Please Enter a date!")
 		}
 		else if(current.format() == 'Invalid date'){
 				date = 'Invalid Date!';
