@@ -2,21 +2,21 @@ import React from 'react';
 
 
 const InningsTable = React.createClass({
+	
+
 	render(){
+		var inningsHeading = [];
+	for(var i=0; i< this.props.data.inning_line_score.length;i++){
+
+		  	inningsHeading.push(<th>{i+1}</th>) 
+
+		  }
 		return(
 			<table>
 			  <thead>
 			    <tr>
 			      <th>Team</th>
-			      <th>1</th>
-			      <th>2</th>
-			      <th>3</th>
-			      <th>4</th>
-			      <th>5</th>
-			      <th>6</th>
-			      <th>7</th>
-			      <th>8</th>
-			      <th>9</th>
+				  {inningsHeading}
 				  <th style={{fontWeight:'700'}}>R</th>
 			      <th style={{fontWeight:'700'}}>H</th>
 			      <th style={{fontWeight:'700'}}>E</th>

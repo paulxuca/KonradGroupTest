@@ -75,11 +75,6 @@ const Navigation = React.createClass({
 				<li onClick={this.changeDate} id="previous" style={{float:'left', marginRight:10}} className={"date-selectors " + (!this.state.date?'hidden':'show')}>Previous Date</li>
 				<li onClick={this.changeDate} id="next" style={{float:'left'}} className={"date-selectors " + (!this.state.date?'hidden':'show')}>Next Date</li>
 			</ul>
-			<form>
-			<fieldset>
-				<input type="text"/>
-			</fieldset>
-			</form>
 			<form style={{float:'right', lineHeight: '5rem'}} onSubmit={this.handleSubmit}>
 				<fieldset>
 					<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Year" onChange={this.handleChange} id="year" value={this.state.year}/>
@@ -88,6 +83,12 @@ const Navigation = React.createClass({
 					<button type="submit">Submit</button>
 				</fieldset>
 			</form>
+			<form style={{width:'20%', float:'right', lineHeight:'5.2rem', marginRight:'20'}}>
+			<fieldset>
+				<input type="text"/>
+			</fieldset>
+			</form>
+			
 			</section>
 		</nav>
 		);
