@@ -1,5 +1,9 @@
 # KonradGroupTest
-Assessment for Konrad Group
+Assessment for Konrad Group  
+Built using the MLB Api:  
+- Notifications.json
+- Master_Scoreboard.json
+- Scoreboard.json
 
 #Running The Web app
 Git clone it  
