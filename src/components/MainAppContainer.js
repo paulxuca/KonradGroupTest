@@ -29,6 +29,7 @@ const MainAppContainer = React.createClass({
 		else if(current.format() == 'Invalid date'){
 				date = 'Invalid Date!';
 		}
+		var favouriteTeam = (this.props.favourite == '')? 'BLUE JAYS': this.props.favourite.toUpperCase();
 		if(games && games.length){
 			return(
 			<div className="container" style={{textAlign:'center'}}>
@@ -36,7 +37,7 @@ const MainAppContainer = React.createClass({
 				<h1 style={{marginLeft:'auto', marginRight:'auto', marginBottom:'0.5rem'}}>{date}</h1>
 				</div>
 					{games.map(function(result){
-					if(result && (result['away_team_name'].toUpperCase() == 'BLUE JAYS' || result['home_team_name'].toUpperCase() == 'BLUE JAYS' )){
+					if(result && (result['away_team_name'].toUpperCase() == favouriteTeam || result['home_team_name'].toUpperCase() == favouriteTeam )){
 						var score_away = (result.status.status.toUpperCase() != 'CANCELLED' && result.status.status.toUpperCase() != 'POSTPONED')?result['linescore']['r']['away']:'0';
 						var score_home = (result.status.status.toUpperCase() != 'CANCELLED' && result.status.status.toUpperCase() != 'POSTPONED')?result['linescore']['r']['home']:'0';
 						return (
@@ -46,7 +47,7 @@ const MainAppContainer = React.createClass({
 					}, this)}
 
 					{games.map(function(result){
-					if(result &&(result['away_team_name'].toUpperCase() != 'BLUE JAYS' && result['home_team_name'].toUpperCase() != 'BLUE JAYS' ) ){
+					if(result &&(result['away_team_name'].toUpperCase() != favouriteTeam  && result['home_team_name'].toUpperCase() != favouriteTeam) ){
 						var score_away = (result.status.status.toUpperCase() != 'CANCELLED' && result.status.status.toUpperCase() != 'POSTPONED')?result['linescore']['r']['away']:'0';
 						var score_home = (result.status.status.toUpperCase() != 'CANCELLED' && result.status.status.toUpperCase() != 'POSTPONED')?result['linescore']['r']['home']:'0';
 					return (

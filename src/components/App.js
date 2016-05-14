@@ -14,14 +14,16 @@ const MainApp = React.createClass({
             date: '',
             nextDate: '',
             sidebarOpen: false,
-            sidebarContent:''
+            sidebarContent:'',
+            favouriteTeam: ''
         }
     },
-    onDateUpdate(year, date, month) {
+    onDateUpdate(year, date, month, favouriteTeam) {
         this.setState({
             year,
             date,
-            month
+            month,
+            favouriteTeam
         });
         this.getDataScoreBoard(year, date, month);
     },
@@ -42,6 +44,14 @@ const MainApp = React.createClass({
                     data: res.data.games.game,
                     nextDate: res.data.games['next_day_date']
                 });
+            }.bind(this),
+             error:function(err){
+            	if(err){
+            		this.setState({
+                    data: '',
+                    nextDate:''
+                });
+            	}
             }.bind(this)
         })
     },
@@ -70,7 +80,7 @@ const MainApp = React.createClass({
                		onSetOpen={this.onSetSidebarOpen}
                		styles={{sidebar:{width:'50%', backgroundColor:'white'}}}>
                		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
-	    		<MainAppContainer year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} onClick={this.handleGameClick}/>
+	    		<MainAppContainer year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} favourite={this.state.favouriteTeam} onClick={this.handleGameClick}/>
       			</Sidebar>);
     }
 });

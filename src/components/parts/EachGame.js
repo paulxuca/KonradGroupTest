@@ -18,7 +18,7 @@ const EachGame = React.createClass({
 				</div>
 				</div>
 				  <p className="card-text">{this.props.result.status.status}</p>
-				  <button className="btn btn-primary" onClick={this.props.onClick} id={this.props.result.game_data_directory}>More Information</button>
+				  <button className={(this.props.result.status.status == 'Cancelled'|| this.props.result.status.status == 'Postponed')? 'btn btn-primary button-disabled':'btn btn-primary'} onClick={this.props.onClick} id={this.props.result.game_data_directory}>More Information</button>
 			</div>
 		</div>);
     }

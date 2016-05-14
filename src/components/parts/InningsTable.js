@@ -6,10 +6,8 @@ const InningsTable = React.createClass({
 
 	render(){
 		var inningsHeading = [];
-	for(var i=0; i< this.props.data.inning_line_score.length;i++){
-
+		for(var i=0; i< this.props.data.inning_line_score.length;i++){
 		  	inningsHeading.push(<th>{i+1}</th>) 
-
 		  }
 		return(
 			<table>
