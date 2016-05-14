@@ -2,8 +2,6 @@ import React from 'react';
 
 
 const InningsTable = React.createClass({
-	
-
 	render(){
 		var inningsHeading = [];
 		for(var i=0; i< this.props.data.inning_line_score.length;i++){

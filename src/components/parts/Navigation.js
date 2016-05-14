@@ -1,6 +1,5 @@
 import React from 'react';
 
-
  var months = {
      'Jan': 1,
      'Feb': 2,
@@ -50,37 +49,34 @@ const Navigation = React.createClass({
     },
 
     render() {
-            return ( < nav style = {
-                        {
-                            backgroundColor: '#f4f5f6',
-                            borderBottom: 'solid .1rem',
-                            borderBottomColor: '#d1d1d1',
-                            display: 'block',
-                            height: '5.2rem',
-                            width: '100%'
-                        }
-                    } >
-
-			<section className="container">
-			<form style={{float:'right', lineHeight: '5rem'}} onSubmit={this.handleSubmit}>
-				<fieldset>
-					<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Year" onChange={this.handleChange} id="year" value={this.state.year}/>
-					<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Month" onChange={this.handleChange} id="month" value={this.state.month}/>
-					<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Date" onChange={this.handleChange} id="date" value={this.state.date}/>
-					<button type="submit">Submit</button>
-				</fieldset>
-			</form>
-			<form style={{width:'20%', float:'right', lineHeight:'5.2rem', marginRight:20}}>
+        return(<nav style= {
+        	{
+                backgroundColor: '#f4f5f6',
+                borderBottom: 'solid .1rem',
+                borderBottomColor: '#d1d1d1',
+                display: 'block',
+                height: '5.2rem',
+                width: '100%'
+            }}>
+		<section className="container">
+		<form style={{float:'right', lineHeight: '5rem'}} onSubmit={this.handleSubmit}>
 			<fieldset>
-				<input type="text" placeholder="Favourite Team" id="favourite" value={this.state.favouriteTeam} onChange={this.handleChange}/>
+				<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Year" onChange={this.handleChange} id="year" value={this.state.year}/>
+				<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Month" onChange={this.handleChange} id="month" value={this.state.month}/>
+				<input style={{width:60, marginRight:10, fontSize: 14}} type="text" placeholder="Date" onChange={this.handleChange} id="date" value={this.state.date}/>
+				<button type="submit">Submit</button>
 			</fieldset>
-			</form>
-			
-			</section>
-		</nav>
-		);
+		</form>
+		<form style={{width:'20%', float:'right', lineHeight:'5.2rem', marginRight:20}}>
+		<fieldset>
+			<input type="text" placeholder="Favourite Team" id="favourite" value={this.state.favouriteTeam} onChange={this.handleChange}/>
+		</fieldset>
+		</form>
+		
+		</section>
+	</nav>
+	);
 	}
-
 });
 
 export default Navigation;

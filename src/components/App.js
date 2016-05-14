@@ -1,10 +1,10 @@
 import '../assets/stylesheets/base.scss';
 import React, { Component } from 'react';
+import moment from 'moment';
 import MainAppContainer from './MainAppContainer';
 import Navigation from './parts/Navigation';
 import Sidebar from 'react-sidebar';
 import SideBarContainer from './SideBarContainer'
-import moment from 'moment';
 
  var months = {
      'Jan': 1,
@@ -104,7 +104,7 @@ const MainApp = React.createClass({
            		onSetOpen={this.onSetSidebarOpen}
            		styles={{sidebar:{width:'50%', backgroundColor:'white'}}}>
            		<Navigation onUpdate={this.onDateUpdate} nextDate={this.state.nextDate}/>
-    		<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} favourite={this.state.favouriteTeam} onClick={this.handleGameClick}/>
+    			<MainAppContainer onDateSwitch={this.changeDate} year={this.state.year} month={this.state.month} date={this.state.date} data={this.state.data} favourite={this.state.favouriteTeam} onClick={this.handleGameClick}/>
   			</Sidebar>);
     }
 });
