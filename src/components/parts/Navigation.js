@@ -67,7 +67,7 @@ const Navigation = React.createClass({
 				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
-		<form style={{width:'40%', float:'right', lineHeight:'5.2rem', marginRight:20}}>
+		<form style={{width:'40%', float:'right', lineHeight:'5.2rem', marginRight:20}} onSubmit={this.handleSubmit}>
 		<fieldset>
 			<input type="text" placeholder="Team: || Stadium:" id="query" value={this.state.queryOptions} onChange={this.handleChange}/>
 		</fieldset>
