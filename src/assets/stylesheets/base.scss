@@ -817,7 +817,7 @@ h6 {
 }
 
 .card-block {
-    min-height: 250px;
+    height:250px;
     &h2 {
         margin-bottom: 0.5rem;
     }
@@ -837,4 +837,10 @@ h6 {
     &:hover {
         opacity: 1;
     }
+}
+
+.team-selectors{
+	span{
+		
+	}
 }
